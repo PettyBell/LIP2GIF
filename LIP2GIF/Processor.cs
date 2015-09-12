@@ -65,7 +65,7 @@ namespace RMP {
 			// GIFアニメーションを生成
 			icon.Visible = false;
 			ProcessDialog dialog = new ProcessDialog();
-			String dstPath = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), DateTime.Now.ToString("LIP2GIF_yyyyMMdd_HHmmss") + ".gif");
+			String dstPath = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), APP_NAME + "_" + DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".gif");
             dialog.Show();
 			await Task.Run(() => {
 				GenerateAnimationGIF(tmpDir, dstPath);

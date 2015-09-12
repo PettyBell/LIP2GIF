@@ -3463,7 +3463,7 @@
 		<row><td>IDS_PROGMSG_XML_UPDATE_FILE</td><td>1033</td><td>Updating XML file %s...</td><td>0</td><td/><td>1688457746</td></row>
 		<row><td>IDS_SETUPEXE_EXPIRE_MSG</td><td>1033</td><td>This setup works until %s. The setup will now exit.</td><td>0</td><td/><td>1688457746</td></row>
 		<row><td>IDS_SETUPEXE_LAUNCH_COND_E</td><td>1033</td><td>This setup was built with an evaluation version of InstallShield and can only be launched from setup.exe.</td><td>0</td><td/><td>1688457746</td></row>
-		<row><td>IDS_SHORTCUT_DISPLAY_NAME1</td><td>1033</td><td>LAUNCH~1.EXE|Launch LIP2GIF.exe</td><td>0</td><td/><td>1688408754</td></row>
+		<row><td>IDS_SHORTCUT_DISPLAY_NAME1</td><td>1033</td><td>LIP2GIF</td><td>0</td><td/><td>1688460594</td></row>
 		<row><td>IDS_SQLBROWSE_INTRO</td><td>1033</td><td>From the list of servers below, select the database server you would like to target.</td><td>0</td><td/><td>1688457746</td></row>
 		<row><td>IDS_SQLBROWSE_INTRO_DB</td><td>1033</td><td>From the list of catalog names below, select the database catalog you would like to target.</td><td>0</td><td/><td>1688457746</td></row>
 		<row><td>IDS_SQLBROWSE_INTRO_TEMPLATE</td><td>1033</td><td>[IS_SQLBROWSE_INTRO]</td><td>0</td><td/><td>1688457746</td></row>
@@ -3755,6 +3755,7 @@
 		<row><td>ID_STRING1</td><td>1033</td><td/><td>0</td><td/><td>1688457746</td></row>
 		<row><td>ID_STRING2</td><td>1033</td><td>http://github.com/manse/LIP2GIF</td><td>0</td><td/><td>1688419154</td></row>
 		<row><td>ID_STRING3</td><td>1033</td><td>LIP2GIF</td><td>0</td><td/><td>1688453938</td></row>
+		<row><td>ID_STRING4</td><td>1033</td><td>LAUNCH~1.EXE|Launch LIP2GIF.exe</td><td>0</td><td/><td>1688446258</td></row>
 		<row><td>IIDS_UITEXT_FeatureUninstalled</td><td>1033</td><td>This feature will remain uninstalled.</td><td>0</td><td/><td>1688457746</td></row>
 	</table>
 
@@ -3869,6 +3870,7 @@
 		<col def="S255">ISBuildSourcePath</col>
 		<col def="I2">ISIconIndex</col>
 		<row><td>ARPPRODUCTICON.exe</td><td/><td>&lt;VSSolutionFolder&gt;\LIP2GIF\icon.ico</td><td>0</td></row>
+		<row><td>LIP2GIF.exe1_AF8330077B174E99BD7DB9C47DA8A42D.exe</td><td/><td>C:\Users\Ryota\Documents\GitHub\LIP2GIF\LIP2GIF\bin\Release\LIP2GIF.exe</td><td>0</td></row>
 		<row><td>LIP2GIF.exe_250090F80DBA43D2869EE3A514A78F5A.exe</td><td/><td>C:\Users\Ryota\Documents\GitHub\LIP2GIF\LIP2GIF\bin\Release\LIP2GIF.exe</td><td>0</td></row>
 	</table>
 
@@ -4346,7 +4348,6 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<row><td>IS_SQLSERVER_SERVER</td><td/><td/></row>
 		<row><td>IS_SQLSERVER_USERNAME</td><td>sa</td><td/></row>
 		<row><td>InstallChoice</td><td>AR</td><td/></row>
-		<row><td>LAUNCHPROGRAM</td><td>1</td><td/></row>
 		<row><td>LAUNCHREADME</td><td>1</td><td/></row>
 		<row><td>Manufacturer</td><td>##COMPANY_NAME##</td><td/></row>
 		<row><td>PIDKEY</td><td/><td/></row>
@@ -4388,6 +4389,7 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<row><td>RestartManagerOption</td><td>CloseRestart</td><td/></row>
 		<row><td>SERIALNUMBER</td><td/><td/></row>
 		<row><td>SERIALNUMVALSUCCESSRETVAL</td><td>1</td><td/></row>
+		<row><td>SHOWLAUNCHPROGRAM</td><td>0</td><td/></row>
 		<row><td>SecureCustomProperties</td><td>ISFOUNDNEWERPRODUCTVERSION;USERNAME;COMPANYNAME;ISX_SERIALNUM;SUPPORTDIR</td><td/></row>
 		<row><td>SelectedSetupType</td><td>##IDS__DisplayName_Typical##</td><td/></row>
 		<row><td>SetupType</td><td>Typical</td><td/></row>
@@ -4540,6 +4542,7 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<col def="S255">ISShortcutName</col>
 		<col def="I4">ISAttributes</col>
 		<row><td>LIP2GIF.exe</td><td>lip2gif</td><td>##IDS_SHORTCUT_DISPLAY_NAME1##</td><td>LIP2GIF.exe</td><td>AlwaysInstall</td><td/><td/><td/><td>LIP2GIF.exe_250090F80DBA43D2869EE3A514A78F5A.exe</td><td>1</td><td>1</td><td>DATABASEDIR</td><td/><td/><td/><td/><td/><td/><td/></row>
+		<row><td>LIP2GIF.exe1</td><td>DesktopFolder</td><td>##IDS_SHORTCUT_DISPLAY_NAME1##</td><td>LIP2GIF.exe</td><td>AlwaysInstall</td><td/><td/><td/><td>LIP2GIF.exe1_AF8330077B174E99BD7DB9C47DA8A42D.exe</td><td>1</td><td>1</td><td>DATABASEDIR</td><td/><td/><td/><td/><td/><td/><td/></row>
 	</table>
 
 	<table name="Signature">
