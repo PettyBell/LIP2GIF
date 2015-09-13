@@ -38,24 +38,21 @@ namespace RMP {
 			Directory.CreateDirectory(tmpDir);
 
 			// 画像サイズが変わっていたらプレビュー画像を書き出す（クリスタが終了するまで繰り返し）
-			int imageIndex = 0;
 			long lastImageSize = 0;
 			while (IsClipStudioPaintRunning()) {
-				long imageSize = new FileInfo(path).Length;
-				if (imageSize != lastImageSize) {
+				long imageSize = 0;
+				try {
+					imageSize = new FileInfo(path).Length;
+				} catch (Exception e) { }
+				if (imageSize != 0 && imageSize != lastImageSize) {
 					byte[] pngBytes = new byte[0];
-					int retry = 5;
-					while (retry-- > 0) {
-						try {
-							pngBytes = GetPNGDataFromLIP(path);
-							break;
-						} catch (Exception e) {
-						}
-						System.Threading.Thread.Sleep(1000);
+					try {
+						pngBytes = GetPNGDataFromLIP(path);
+					} catch (Exception e) {
 					}
 					if (pngBytes.Length != 0) {
-						File.WriteAllBytes(tmpDir + "\\" + String.Format("{0:D10}", imageIndex++) + ".png", pngBytes);
-						icon.Icon = GenerateCounterIcon(imageIndex);
+						File.WriteAllBytes(tmpDir + "\\" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".png", pngBytes);
+						icon.Icon = GenerateCounterIcon(Directory.GetFiles(tmpDir).Length);
 						lastImageSize = imageSize;
 					}
 				}
@@ -66,7 +63,7 @@ namespace RMP {
 			icon.Visible = false;
 			ProcessDialog dialog = new ProcessDialog();
 			String dstPath = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), APP_NAME + "_" + DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".gif");
-            dialog.Show();
+			dialog.Show();
 			await Task.Run(() => {
 				GenerateAnimationGIF(tmpDir, dstPath);
 			});
@@ -99,7 +96,7 @@ namespace RMP {
 				canvas.Scale((int)(canvas.Width * 0.5), (int)(canvas.Height * 0.5));
 				collection.Add(canvas);
 
-				int perFrame = (int) Math.Ceiling(600.0 / files.Length);
+				int perFrame = (int)Math.Ceiling(600.0 / files.Length);
 				foreach (String file in files) {
 					canvas = new MagickImage(file);
 					canvas.AnimationDelay = perFrame;
