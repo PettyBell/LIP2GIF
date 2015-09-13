@@ -37,14 +37,14 @@ namespace RMP {
 			String tmpDir = path + "$" + APP_NAME + @"\";
 			Directory.CreateDirectory(tmpDir);
 
-			// 画像サイズが変わっていたらプレビュー画像を書き出す（クリスタが終了するまで繰り返し）
-			long lastImageSize = 0;
+			// 画像の更新日時が変わっていたらプレビュー画像を書き出す（クリスタが終了するまで繰り返し）
+			String lastImageSize = "";
 			while (IsClipStudioPaintRunning()) {
-				long imageSize = 0;
+				String imageSize = "";
 				try {
-					imageSize = new FileInfo(path).Length;
+					imageSize = new FileInfo(path).LastWriteTime.ToString();
 				} catch (Exception e) { }
-				if (imageSize != 0 && imageSize != lastImageSize) {
+				if (imageSize != "" && imageSize != lastImageSize) {
 					byte[] pngBytes = new byte[0];
 					try {
 						pngBytes = GetPNGDataFromLIP(path);
