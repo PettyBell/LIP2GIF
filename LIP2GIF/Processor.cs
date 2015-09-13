@@ -34,7 +34,7 @@ namespace RMP {
 			System.Diagnostics.Process.Start(path);
 			while (!IsClipStudioPaintRunning()) System.Threading.Thread.Sleep(1000);
 
-			String tmpDir = path + "$" + APP_NAME + "\\";
+			String tmpDir = path + "$" + APP_NAME + @"\";
 			Directory.CreateDirectory(tmpDir);
 
 			// 画像サイズが変わっていたらプレビュー画像を書き出す（クリスタが終了するまで繰り返し）
@@ -51,7 +51,7 @@ namespace RMP {
 					} catch (Exception e) {
 					}
 					if (pngBytes.Length != 0) {
-						File.WriteAllBytes(tmpDir + "\\" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".png", pngBytes);
+						File.WriteAllBytes(tmpDir + @"\" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".png", pngBytes);
 						icon.Icon = GenerateCounterIcon(Directory.GetFiles(tmpDir).Length);
 						lastImageSize = imageSize;
 					}
@@ -150,12 +150,14 @@ namespace RMP {
 		 */
 		Boolean IsClipStudioPaintRunning() {
 			Process[] processes = Process.GetProcesses();
+			Boolean isRunning = false;
 			foreach (Process process in processes) {
 				if (process.ProcessName == @"CLIPStudioPaint") {
-					return true;
+					isRunning = true;
 				}
+				process.Dispose();
 			}
-			return false;
+			return isRunning;
 		}
 
 		/**
